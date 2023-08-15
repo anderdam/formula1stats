@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -11,9 +13,9 @@ import org.springframework.data.annotation.Id;
 @EqualsAndHashCode
 @ToString
 @Entity
-public class Teams {
+public class Drivers {
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private Long id;
 
     @Column
@@ -23,23 +25,20 @@ public class Teams {
     private String nationality;
 
     @Column
-    private String CreatedAt;
+    private LocalDate birthDate;
 
     @Column
-    private String director;
+    private String team;
 
     @Column
-    private String projetist;
+    private Long wins;
 
     @Column
-    private String firstDriver;
+    private Long poles;
 
     @Column
-    private String secondDriver;
+    private Long podiums;
 
     @Column
-    private String testDriver;
-
-    @Column
-    private String mainSponsor;
+    private Long races;
 }

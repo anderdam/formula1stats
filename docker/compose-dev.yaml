@@ -1,0 +1,30 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    image: docker/dev-environments-default:stable-1
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+
+  f1stats:
+    image: postgres
+    hostname: e124c2d3d479
+    environment:
+      LANG: en_US.utf8
+      PG_MAJOR: 15
+      PG_VERSION: 15.3-1.pgdg120+1
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_PASSWORD: 1234
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/15/bin
+      GOSU_VERSION: 1.16
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: "no"
+    runtime: runc
+
